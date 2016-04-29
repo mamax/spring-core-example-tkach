@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+ 		http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+    <bean id="client" class="com.epam.spring.core.beans.Client">
+        <constructor-arg index="0" value="1"/>
+        <constructor-arg index="1" value="John Smith"/>
+    </bean>
+
+    <bean id="eventLogger" class="com.epam.spring.core.loggers.ConsoleEventLogger" />
+
+    <bean id="app" class="com.epam.spring.App">
+        <constructor-arg ref = "client"/>
+        <constructor-arg ref = "eventLogger"/>
+    </bean>
+
+    <bean id = "event" class="com.epam.spring.core.loggers.Event" scope="prototype">
+        <constructor-arg>
+            <bean class="java.util.Date"/>
+        </constructor-arg>
+    </bean>
+
+    <!--<bean id="client" class="com.epam.spring.App2.Client">-->
+        <!--<constructor-arg index="0" value="1"/>-->
+        <!--<constructor-arg index="1" value="John Smith"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="eventLogger" class="com.epam.spring.core.loggers.ConsoleEventLogger" />-->
+
+    <!--<bean id="app" class="com.epam.spring.App2">-->
+          <!--<constructor-arg ref ="client"/>-->
+          <!--<constructor-arg ref ="eventLogger"/>-->
+    <!--</bean>-->
+
+    <!--bean id="initFileLogger" class="com.epam.spring.core.loggers.FileEventLogger" init-method="init">
+        <constructor-arg value="com"/>
+    </bean-->
+
+</beans>
